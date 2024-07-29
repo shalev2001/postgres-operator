@@ -2,9 +2,9 @@ package postgres
 
 import (
 	"fmt"
-
 	"github.com/go-logr/logr"
 	"github.com/lib/pq"
+	dbv1alpha1 "github.com/movetokube/postgres-operator/pkg/apis/db/v1alpha1"
 )
 
 type awspg struct {
@@ -50,7 +50,11 @@ func (c *awspg) CreateUserRole(role, password string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-
+	instance := &dbv1alpha1.PostgresUser{}
+	if instance.Spec.IamAuthentication == true {
+		err := c.pg.GrantRole("rds_iam", role)
+		return "", err
+	}
 	return returnedRole, nil
 }
 
