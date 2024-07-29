@@ -45,6 +45,7 @@ spec:
                 type: string
               iamAuthentication:
                 type: boolean
+                default: false
               secretTemplate:
                 additionalProperties:
                   type: string
@@ -53,7 +54,6 @@ spec:
             - database
             - role
             - secretName
-            - iamAuthentication
 
             type: object
           status:

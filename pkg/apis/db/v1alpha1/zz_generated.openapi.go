@@ -305,7 +305,7 @@ func schema_pkg_apis_db_v1alpha1_PostgresUserSpec(ref common.ReferenceCallback) 
 						},
 					},
 				},
-				Required: []string{"role", "database", "secretName", "iamAuthentication"},
+				Required: []string{"role", "database", "secretName"},
 			},
 		},
 	}
