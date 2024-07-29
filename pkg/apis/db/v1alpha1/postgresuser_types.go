@@ -10,9 +10,11 @@ import (
 // PostgresUserSpec defines the desired state of PostgresUser
 // +k8s:openapi-gen=true
 type PostgresUserSpec struct {
-	Role       string `json:"role"`
-	Database   string `json:"database"`
-	SecretName string `json:"secretName"`
+	Role              string `json:"role"`
+	Database          string `json:"database"`
+	SecretName        string `json:"secretName"`
+	IamAuthentication bool   `json:"iamAuthentication"`
+
 	// +optional
 	SecretTemplate map[string]string `json:"secretTemplate,omitempty"` // key-value, where key is secret field, value is go template
 	// +optional
